@@ -27,7 +27,7 @@ boolean shouldNotNotifySuccess(statusMessage) {
   return statusMessage == 'Success' && !config.getNotifySuccess()
 }
 
-void notifyResult() {
+void notifyResult(team) {
   JenkinsHelper helper = new JenkinsHelper()
   JenkinsStatus status = new JenkinsStatus()
   SlackFormatter formatter = new SlackFormatter()
@@ -53,7 +53,7 @@ void notifyResult() {
     testSummary = jenkinsTestsSummary.getTestSummary()
   }
 
-  def message = formatter.format "${statusMessage} after ${duration}", changes, testSummary
+  def message = formatter.format "${statusMessage} after ${duration} @${team}", changes, testSummary
 
   sender.send message, color
 }
