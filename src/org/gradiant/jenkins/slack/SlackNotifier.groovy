@@ -41,6 +41,17 @@ void notifyResult(team) {
     return
   }
 
+  // We have flaky unstable rust builds for now
+  if(statusMessage == 'Unstable') {
+    println("SlackNotifier - Skipping unstable notifications for now")
+    return
+  }
+
+  if(helper.getBranchName().startsWith('PR')){
+    println("SlackNotifier - Skipping notification for PR branch")
+    return
+  }
+
   // No need to ping
   if(statusMessage == 'Back to normal') {
     real_team = ""
