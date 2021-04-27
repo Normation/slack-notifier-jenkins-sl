@@ -45,7 +45,7 @@ void notifyResult(team) {
   if(statusMessage == 'Back to normal') {
     real_team = ""
   } else {
-    real_team = "@${team}"
+    real_team = " @${team}"
   }
 
   def color = status.getStatusColor()
@@ -60,7 +60,7 @@ void notifyResult(team) {
     testSummary = jenkinsTestsSummary.getTestSummary()
   }
 
-  def message = formatter.format "${statusMessage} after ${duration} ${team}", changes, testSummary
+  def message = formatter.format "${statusMessage} after ${duration}${real_team}", changes, testSummary
 
   sender.send message, color
 }
