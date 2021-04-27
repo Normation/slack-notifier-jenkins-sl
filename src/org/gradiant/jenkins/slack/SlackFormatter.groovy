@@ -8,8 +8,9 @@ String format(String title = '', String message = '', String testSummary = '') {
     def branchName = helper.getBranchName()
     def buildNumber = helper.getBuildNumber()
     def url = helper.getAbsoluteUrl()
+    def stage = helper.getStageName()
 
-    def result = "${project}"
+    def result = "${project} - ${stage}"
 
     if (branchName != null) result = "${result} >> ${branchName}"
 

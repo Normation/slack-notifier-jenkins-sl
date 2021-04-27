@@ -41,6 +41,13 @@ void notifyResult(team) {
     return
   }
 
+  // No need to ping
+  if(statusMessage == 'Back to normal') {
+    real_team = ""
+  } else {
+    real_team = "@${team}"
+  }
+
   def color = status.getStatusColor()
   def duration = helper.getDuration()
 
@@ -53,7 +60,7 @@ void notifyResult(team) {
     testSummary = jenkinsTestsSummary.getTestSummary()
   }
 
-  def message = formatter.format "${statusMessage} after ${duration} @${team}", changes, testSummary
+  def message = formatter.format "${statusMessage} after ${duration} ${team}", changes, testSummary
 
   sender.send message, color
 }

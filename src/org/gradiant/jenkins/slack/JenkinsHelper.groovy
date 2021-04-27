@@ -27,6 +27,10 @@ String getProjectName() {
     return env.JOB_NAME
 }
 
+String getStageName() {
+    return env.STAGE_NAME
+}
+
 String getMultiBranchProjectName() {
     String[] entries = env.JOB_NAME.split('/')
     def len = entries.length
