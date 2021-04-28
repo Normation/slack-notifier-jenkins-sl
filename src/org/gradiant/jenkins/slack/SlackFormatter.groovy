@@ -12,7 +12,14 @@ String format(String title = '', String message = '', String testSummary = '') {
 
     def result = "${project} - ${stage}"
 
-    if (branchName != null) result = "${result} >> ${branchName}"
+    def prefix = "branches/rudder"
+    if (branchName != null) {
+        if branchName.startsWith("branches/rudder") {
+            branchName = string.substring(prefix.size())
+        }
+    }
+
+    if (branchName != null) result = "*${result}* >> ${branchName}"
 
     result = "${result} - #${buildNumber} ${title.trim()} (<${url}|Open>)"
     if (message) result = result + "\nChanges:\n\t ${message.trim()}"
