@@ -47,9 +47,11 @@ void notifyResult(team) {
     return
   }
 
-  if(helper.getBranchName().startsWith('PR')){
-    println("SlackNotifier - Skipping notification for PR branch")
-    return
+  if (helper.getBranchName() != null) {
+    if(helper.getBranchName().startsWith('PR')) {
+      println("SlackNotifier - Skipping notification for PR branch")
+      return
+    }
   }
 
   // No need to ping
