@@ -14,7 +14,7 @@ String format(String title = '', String message = '', String testSummary = '') {
 
     def prefix = "branches/rudder"
     if (branchName != null) {
-        if branchName.startsWith("branches/rudder") {
+        if (branchName.startsWith("branches/rudder")) {
             branchName = string.substring(prefix.size())
         }
     }
