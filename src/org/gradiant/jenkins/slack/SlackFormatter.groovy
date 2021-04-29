@@ -21,7 +21,7 @@ String format(String title = '', String message = '', String testSummary = '') {
 
     if (branchName != null) result = "*${result}* >> ${branchName}"
 
-    result = "${result} - #${buildNumber} ${title.trim()} (<${url}|Open> <${url}/consoleFull|Console>)"
+    result = "${result} - #${buildNumber} ${title.trim()} (<${url}|Open> | <${url}consoleFull|Console>)"
     if (message) result = result + "\nChanges:\n\t ${message.trim()}"
     if (testSummary) result = result + "\n ${testSummary}"
 
