@@ -8,12 +8,15 @@ String format(String title = '', String message = '', String testSummary = '') {
     def branchName = helper.getBranchName()
     def buildNumber = helper.getBuildNumber()
     def url = helper.getAbsoluteUrl()
+    def bo_url = ""
     def stage = helper.getStageName()
 
     def result = "${project} - ${stage}"
 
     def prefix = "branches/rudder"
     if (branchName != null) {
+        bo_url = " | <https://ci.normation.com/jenkins/blue/organizations/jenkins/${project}/detail/${branchName}/${buildNumber}/pipeline|BlueOcean>"
+
         if (branchName.startsWith("branches/rudder")) {
             branchName = string.substring(prefix.size())
         }
@@ -21,7 +24,7 @@ String format(String title = '', String message = '', String testSummary = '') {
 
     if (branchName != null) result = "*${result}* >> ${branchName}"
 
-    result = "${result} - #${buildNumber} ${title.trim()} (<${url}|Open> | <${url}consoleFull|Console>)"
+    result = "${result} - #${buildNumber} ${title.trim()} (<${url}|Open> | <${url}consoleFull|Console>${bo_url})"
     if (message) result = result + "\nChanges:\n\t ${message.trim()}"
     if (testSummary) result = result + "\n ${testSummary}"
 
