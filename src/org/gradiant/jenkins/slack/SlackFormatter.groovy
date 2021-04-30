@@ -9,7 +9,12 @@ String format(String title = '', String message = '', String testSummary = '') {
     def buildNumber = helper.getBuildNumber()
     def url = helper.getAbsoluteUrl()
     def bo_url = ""
-    def stage = helper.getStageName()
+    def stage = ""
+
+    def stage_raw = helper.getStageName()
+    if (stage_raw != null) {
+        stage = " ${stage_raw}"
+    }
 
     def result = "${project} - ${stage}"
 
