@@ -18,11 +18,11 @@ String format(String title = '', String message = '', String testSummary = '') {
 
     def result = "${project} ${stage}"
 
-    def prefix = "branches/rudder"
+    def prefix = "branches/rudder/"
     if (branchName != null) {
         bo_url = " | <https://ci.normation.com/jenkins/blue/organizations/jenkins/${project}/detail/${branchName}/${buildNumber}/pipeline|BlueOcean>"
 
-        if (branchName.startsWith("branches/rudder")) {
+        if (branchName.startsWith(prefix)) {
             branchName = branchName.substring(prefix.size())
         }
     }
