@@ -25,6 +25,8 @@ String format(String title = '', String message = '', String testSummary = '') {
         if (branchName.startsWith(prefix)) {
             branchName = branchName.substring(prefix.size())
         }
+    } else {
+        bo_url = " | <https://ci.normation.com/jenkins/blue/organizations/jenkins/${project}/detail/${project}/${buildNumber}/pipeline|BlueOcean>"
     }
 
     if (branchName != null) result = "*${result}* >> ${branchName}"
