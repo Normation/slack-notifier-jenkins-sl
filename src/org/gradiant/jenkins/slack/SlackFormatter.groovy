@@ -23,7 +23,7 @@ String format(String title = '', String message = '', String testSummary = '') {
         bo_url = " | <https://ci.normation.com/jenkins/blue/organizations/jenkins/${project}/detail/${branchName}/${buildNumber}/pipeline|BlueOcean>"
 
         if (branchName.startsWith("branches/rudder")) {
-            branchName = string.substring(prefix.size())
+            branchName = branchName.substring(prefix.size())
         }
     }
 
